@@ -1,11 +1,28 @@
 sundayFirstCalendar = 'cal && date "+%-m %-d %y"'
 
-mondayFirstCalendar =  'cal | awk \'{ print " "$0; getline; print "Mo Tu We Th Fr Sa Su"; \
+today = new Date
+month = new Array
+month[0] = "Styczeń"
+month[1] = "Luty"
+month[2] = "Marzec"
+month[3] = "Kwiecień"
+month[4] = "Maj"
+month[5] = "Czerwiec"
+month[6] = "Lipiec"
+month[7] = "Sierpień"
+month[8] = "Wrzesień"
+month[9] = "Październik"
+month[10] = "Listopad"
+month[11] = "Grudzień"
+mmmm = month[today.getMonth()]
+yyyy = today.getFullYear()
+
+mondayFirstCalendar = 'cal | awk \'{ print " "$0; getline; print "Po Wt Śr Cz Pt So Nd"; \
 getline; if (substr($0,1,2) == " 1") print "                    1 "; \
 do { prevline=$0; if (getline == 0) exit; print " " \
 substr(prevline,4,17) " " substr($0,1,2) " "; } while (1) }\' && date "+%-m %-d %y"'
 
-command: sundayFirstCalendar
+command: mondayFirstCalendar
 
 #Set this to true to enable previous and next month dates, or false to disable
 otherMonths: true
@@ -62,8 +79,7 @@ render: -> """
 updateHeader: (rows, table) ->
   thead = table.find("thead")
   thead.empty()
-
-  thead.append "<tr><td colspan='7'>#{rows[0]}</td></tr>"
+  thead.append "<tr><td colspan='7'>#{mmmm} #{yyyy}</td></tr>"
   tableRow = $("<tr></tr>").appendTo(thead)
   daysOfWeek = rows[1].split(/\s+/)
 
