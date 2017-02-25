@@ -30,10 +30,14 @@ otherMonths: true
 refreshFrequency: 3600000
 
 style: """
-  bottom: 10px
-  right: 10px
+  bottom: 880px
+  right: 3px
   color: #fff
   font-family: Helvetica Neue
+  font-weight: 100
+  font-size: 24px
+  background-color: rgba(#000, 0.5)
+  border-radius: 5px
 
   table
     border-collapse: collapse
@@ -47,7 +51,7 @@ style: """
   thead tr
     &:first-child td
       font-size: 24px
-      font-weight: 100
+      font-weight: normal
 
     &:last-child td
       font-size: 11px
@@ -61,7 +65,7 @@ style: """
     font-weight: bold
     background: rgba(#fff, 0.2)
     border-radius: 50%
-    
+
   .grey
     color: rgba(#C0C0C0, .7)
 """
